@@ -1,0 +1,29 @@
+<html>
+<head>
+  <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON" />
+  <!-- <meta http-equiv="Set-Cookie" Content="cookie1=withoutSameSite"> -->
+  <!-- <meta http-equiv="Set-Cookie" Content="cookie2=samaSiteNone; SameSite=none"> -->
+  <!-- <meta http-equiv="Set-Cookie" Content="cookie3=samaSiteStrict; SameSite=Strict"> -->
+  <!-- <meta http-equiv="Set-Cookie" Content="cookie4=samaSiteLax; SameSite=Lax"> -->
+</head>
+<body>
+  <h1>Cont</h1>
+  <iframe src="https://172.30.32.222:8081/" frameborder="0"></iframe>
+  <script>
+    window.onload = () => {
+      function setCookie(cname, cvalue, site) {
+        var d = new Date();
+        d.setTime(d.getTime() + (1*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires + '; ' + site;
+      }
+
+      setCookie('cooki1', 'withoutSameSite', '')
+      setCookie('cooki2', 'samaSiteNone', 'SameSite=none')
+      setCookie('cooki3', 'samaSiteStrict', 'SameSite=Strict')
+      setCookie('cooki4', 'samaSiteLax', 'SameSite=Lax')
+      console.log(document.cookie)
+    }
+  </script>
+</body>
+</html>

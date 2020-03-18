@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>inner site</h1>
+  <a href="https://mytest.info.com:8080">link</a>
+  <img src="https://mytest.info.com:8080" alt="">
+
+    <script>
+      var d = new Date();
+        d.setTime(d.getTime() + (1*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+
+      // 情况一：不设置
+      document.cookie="b-cookie=b; " + expires;
+      document.cookie="b-cookie1=b1; SameSite=none;" + expires;
+      // console.log(document.cookie); // b-cookie=b;b-cookie1=b1;
+
+      // 情况二：设置 SameSite
+      document.cookie="b-cookie2=b2; SameSite=lax; " + expires;
+      document.cookie="b-cookie3=b3; SameSite=Strict; " + expires;
+      console.log(document.cookie); // b-cookie1=b1;
+
+      fetch('/mock/02IAiXw6/test')
+        .then(res => res.json())
+        .then(json => console.log(json))
+    </script>
+</body>
+</html>
